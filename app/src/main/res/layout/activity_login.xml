@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+
+    <EditText
+        android:layout_margin="15dp"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        android:ems="10"
+        android:id="@+id/login_email"
+        android:layout_width="match_parent"
+        android:drawableStart="@drawable/ic_email"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_input_login"
+        android:textSize="20sp"
+        android:hint="@string/login_email_text"
+        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"/>
+
+    <EditText
+        android:layout_margin="15dp"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        android:ems="10"
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:drawableStart="@drawable/ic_password"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_input_login"
+        android:textSize="20sp"
+        android:hint="@string/login_password_text"
+        android:inputType="textPassword"
+        android:autofillHints="password" />
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
