@@ -51,12 +51,26 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
         forgotPasswordButton.setOnClickListener(v ->{
-            Toast.makeText(SignInActivity.this, "Sending a recovery Email", Toast.LENGTH_SHORT).show();
-            //TODO: Implement forgot password
+            String email = emailEditText.getText().toString();
+            if(email.isEmpty()) {
+                Toast.makeText(SignInActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
+            }else {
+                sendResetEmail(email);
+            }
         });
     }
 
-
+    private void sendResetEmail(String email) {
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Log.d("FIREBASE-RESET", "Email sent.");
+                Toast.makeText(SignInActivity.this, "Sending a recovery Email", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(e -> {
+            Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.d("FIREBASE-RESET", e.getMessage());
+        });
+    }
 
     private void loginUser(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
