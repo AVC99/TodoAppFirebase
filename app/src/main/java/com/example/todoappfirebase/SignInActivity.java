@@ -1,17 +1,23 @@
 package com.example.todoappfirebase;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.text.BreakIterator;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -21,6 +27,8 @@ public class SignInActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button createAccountButton;
     private Button forgotPasswordButton;
+
+    private Button resetPasswordButton;
 
 
     @Override
@@ -50,14 +58,7 @@ public class SignInActivity extends AppCompatActivity {
                 loginUser(email, password);
             }
         });
-        forgotPasswordButton.setOnClickListener(v ->{
-            String email = emailEditText.getText().toString();
-            if(email.isEmpty()) {
-                Toast.makeText(SignInActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
-            }else {
-                sendResetEmail(email);
-            }
-        });
+        forgotPasswordButton.setOnClickListener(this::onButtonShowPopUp);
     }
 
     private void sendResetEmail(String email) {
@@ -87,5 +88,33 @@ public class SignInActivity extends AppCompatActivity {
         }).addOnFailureListener(e -> {
             Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void onButtonShowPopUp(View view) {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.pop_up_forgot_password, null);
+        resetPasswordButton = popupView.findViewById(R.id.reset_password_button);
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT, true);
+
+        popupWindow.setElevation(30);
+        // show the popup window in the middle of the screen
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        resetPasswordButton.setOnClickListener(v -> {
+            EditText popUpEmailTextEdit = popupView.findViewById(R.id.pop_up_email);
+            String email = popUpEmailTextEdit.getText().toString();
+
+            if (email.isEmpty()) {
+                Toast.makeText(SignInActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
+            } else {
+                sendResetEmail(email);
+                Toast.makeText(SignInActivity.this, "Sending a recovery Email", Toast.LENGTH_SHORT).show();
+                popupWindow.dismiss();
+            }
+        });
+
     }
 }

@@ -12,6 +12,9 @@
         android:theme="@style/Theme.TodoAppFirebase"
         tools:targetApi="31">
         <activity
+            android:name=".NewTask"
+            android:exported="false" />
+        <activity
             android:name=".HomeTodo"
             android:exported="false" />
         <activity

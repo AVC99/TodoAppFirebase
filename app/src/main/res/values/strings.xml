@@ -13,4 +13,5 @@
     <string name="username">Username</string>
     <string name="add_task">Add Task</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="reset_password">Reset Password</string>
 </resources>
