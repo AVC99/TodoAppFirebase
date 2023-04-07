@@ -6,80 +6,81 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CreateAccountActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
             android:layout_gravity="center"
-            android:padding="15dp"
-            android:textSize="40sp"
+            android:layout_margin="15dp"
             android:gravity="center"
+            android:padding="15dp"
             android:text="@string/create_account"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="40sp" />
 
         <EditText
-            android:layout_margin="15dp"
-            android:layout_gravity="center"
-            android:padding="15dp"
-            android:ems="10"
-            android:drawablePadding="10dp"
-            android:id="@+id/create_account_username"
-            android:layout_width="match_parent"
-            android:drawableStart="@drawable/ic_user"
-            android:layout_height="50dp"
-            android:background="@drawable/custom_input_login"
-            android:textSize="20sp"
-            android:hint="@string/username"
-            android:autofillHints="username"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:layout_margin="15dp"
-            android:layout_gravity="center"
-            android:padding="15dp"
-            android:ems="10"
-            android:drawablePadding="10dp"
             android:id="@+id/create_account_email"
             android:layout_width="match_parent"
-            android:drawableStart="@drawable/ic_email"
             android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:autofillHints="emailAddress"
             android:background="@drawable/custom_input_login"
-            android:textSize="20sp"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="10dp"
+            android:ems="10"
             android:hint="@string/login_email_text"
             android:inputType="textEmailAddress"
-            android:autofillHints="emailAddress"/>
+            android:padding="15dp"
+            android:textSize="20sp" />
 
         <EditText
-
-            android:layout_margin="15dp"
-            android:layout_gravity="center"
-            android:padding="15dp"
-            android:ems="10"
-            android:drawablePadding="10dp"
             android:id="@+id/create_account_password"
             android:layout_width="match_parent"
-            android:drawableStart="@drawable/ic_password"
             android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:autofillHints="password"
             android:background="@drawable/custom_input_login"
-            android:textSize="20sp"
+            android:drawableStart="@drawable/ic_password"
+            android:drawablePadding="10dp"
+            android:ems="10"
             android:hint="@string/login_password_text"
             android:inputType="textPassword"
-            android:autofillHints="password" />
+            android:padding="15dp"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/create_account_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:autofillHints="password"
+            android:background="@drawable/custom_input_login"
+            android:drawableStart="@drawable/ic_password"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textSize="20sp" />
 
         <Button
+            android:id="@+id/create_account_create_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/create_account"
-            android:background="@drawable/rounded_button"
             android:layout_margin="15dp"
-            android:textSize="20sp"
-            android:id="@+id/create_account_create_button"
-            android:textAllCaps="false"/>
+            android:background="@drawable/rounded_button"
+            android:text="@string/create_account"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -87,30 +88,28 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
         android:padding="40dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/already_have_an_account"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
         <Button
             android:id="@+id/create_account_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_text"
-            android:textSize="18sp"
-            android:textColor="@android:color/holo_blue_bright"
             android:background="@android:color/transparent"
-            android:textAllCaps="false"/>
+            android:text="@string/login_text"
+            android:textAllCaps="false"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="18sp" />
 
     </LinearLayout>
-
-
-
 
 
 </RelativeLayout>

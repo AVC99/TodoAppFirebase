@@ -50,7 +50,13 @@ public class SignInActivity extends AppCompatActivity {
                 loginUser(email, password);
             }
         });
+        forgotPasswordButton.setOnClickListener(v ->{
+            Toast.makeText(SignInActivity.this, "Sending a recovery Email", Toast.LENGTH_SHORT).show();
+            //TODO: Implement forgot password
+        });
     }
+
+
 
     private void loginUser(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
