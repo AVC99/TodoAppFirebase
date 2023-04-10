@@ -3,6 +3,7 @@ package com.example.todoappfirebase;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,8 +25,9 @@ public class HomeTodo extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FirebaseFirestore db;
     private Task newTask;
-    private  TaskAdapter taskAdapter;
+    private TaskAdapter taskAdapter;
     private ArrayList<Task> firebaseTasks;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,45 +37,54 @@ public class HomeTodo extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         addTaskButton = findViewById(R.id.addTaskFab);
         recyclerView = findViewById(R.id.todo_list_recycler_view);
-        taskAdapter = new TaskAdapter(tasks);
-        recyclerView.setAdapter(taskAdapter);
+
 
         if (extras != null) {
             userID = extras.getString("userID");
-            newTask = (Task) extras.getSerializable("newTask");
             getTaskFromFirebase(userID);
-            Task randomTask = new Task("2","IMPORTANT", "Description 1", new Date(), false,"UID");
-
-            tasks.add(randomTask);
-            if (newTask != null) {
-
-                tasks.add(newTask);
-            }
         }
 
         addTaskButton.setOnClickListener(v -> {
+            Bundle extras1 = getIntent().getExtras();
+            extras1.putString("userID", userID);
+            extras1.putSerializable("taskList", tasks);
             Intent intent = new Intent(HomeTodo.this, NewTaskActivity.class);
-            intent.putExtra("userID", userID);
+            intent.putExtras(extras1);
             startActivity(intent);
         });
 
-
-
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("onResume");
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+
+            ArrayList<Task> taskList = (ArrayList<Task>) extras.getSerializable("taskList");
+            getTaskFromFirebase(userID);
+        }
+    }
+
+
 
     private void getTaskFromFirebase(String userID) {
         firebaseTasks = new ArrayList<>();
+        tasks = new ArrayList<>();
         // get all documents from firebase
         db.collection("tasks").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 for (int i = 0; i < task.getResult().size(); i++) {
                     Task task1 = task.getResult().getDocuments().get(i).toObject(Task.class);
 
-                    if(task1.getUserID().equals(userID)){
+                    if (task1.getUserID().equals(userID)) {
                         Log.d("COLLECTION", "getTaskFromFirebase: " + task1.getTitle());
+
                         tasks.add(task1);
+                        taskAdapter = new TaskAdapter(tasks);
+                        recyclerView.setAdapter(taskAdapter);
                         firebaseTasks.add(task1);
-                        taskAdapter.notifyDataSetChanged();
                     }
                 }
             }
