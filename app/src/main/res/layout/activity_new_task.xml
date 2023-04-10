@@ -1,9 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewTask">
+    android:orientation="vertical"
+    tools:context=".NewTaskActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/create_a_new_task"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:layout_marginVertical="15dp"/>
+
+    <EditText
+        android:id="@+id/new_task_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:autofillHints="text"
+        android:background="@drawable/custom_input_login"
+        android:drawableStart="@drawable/ic_title"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/title"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/new_task_description"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="top"
+        android:layout_margin="15dp"
+        android:autofillHints="text"
+        android:background="@drawable/custom_input_login"
+        android:drawableStart="@drawable/ic_description"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="@string/description"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/new_task_date"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:autofillHints="emailAddress"
+        android:background="@drawable/custom_input_login"
+        android:drawableStart="@drawable/ic_calendar"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/dd_mm_yyyy"
+        android:inputType="text|date"
+        android:padding="15dp"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/new_task_create_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@android:color/holo_blue_bright"
+        android:text="@string/create_task"
+        android:textAllCaps="false"
+        android:textSize="25sp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -65,6 +65,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         Toast.makeText(CreateAccountActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(CreateAccountActivity.this, HomeTodo.class);
                         startActivity(intent);
+                        finish();
                     } else {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(CreateAccountActivity.this, "Authentication failed.",

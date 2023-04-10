@@ -14,4 +14,9 @@
     <string name="add_task">Add Task</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="reset_password">Reset Password</string>
+    <string name="create_task">Create Task</string>
+    <string name="dd_mm_yyyy">Due date : dd/mm/yyyy</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="create_a_new_task">Create a new Task</string>
 </resources>
