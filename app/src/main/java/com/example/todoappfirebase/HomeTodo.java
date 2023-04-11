@@ -24,7 +24,6 @@ public class HomeTodo extends AppCompatActivity {
     private String userID;
     private RecyclerView recyclerView;
     private FirebaseFirestore db;
-    private Task newTask;
     private TaskAdapter taskAdapter;
     private ArrayList<Task> firebaseTasks;
 

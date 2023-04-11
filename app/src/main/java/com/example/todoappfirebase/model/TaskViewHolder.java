@@ -1,6 +1,7 @@
 package com.example.todoappfirebase.model;
 
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -11,7 +12,7 @@ import com.example.todoappfirebase.R;
 
 public class TaskViewHolder extends RecyclerView.ViewHolder {
 
-    private RadioButton radioButton;
+    private CheckBox radioButton;
     private TextView taskName;
     private TextView taskDescription;
     private TextView taskDate;
@@ -24,11 +25,11 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         this.taskDate = itemView.findViewById(R.id.task_date);
     }
 
-    public RadioButton getRadioButton() {
+    public CheckBox getRadioButton() {
         return radioButton;
     }
 
-    public void setRadioButton(RadioButton radioButton) {
+    public void setRadioButton(CheckBox radioButton) {
         this.radioButton = radioButton;
     }
 

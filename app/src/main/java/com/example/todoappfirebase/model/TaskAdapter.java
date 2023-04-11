@@ -1,5 +1,6 @@
 package com.example.todoappfirebase.model;
 
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todoappfirebase.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
+    private FirebaseFirestore firebaseDB;
     private ArrayList<Task> tasks;
 
     public TaskAdapter(ArrayList<Task> tasks) {
@@ -24,7 +27,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_row, parent, false);
-
+        firebaseDB = FirebaseFirestore.getInstance();
         return new TaskViewHolder(view);
     }
 
@@ -35,6 +38,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         holder.getTaskName().setText(task.getTitle());
         holder.getTaskDescription().setText(task.getDescription());
         holder.getTaskDate().setText(task.getDueDate().toString());
+
+        holder.getRadioButton().setChecked(task.isCompleted());
+
+        holder.getRadioButton().setOnClickListener(v ->{
+
+            if(holder.getRadioButton().isChecked()){
+                holder.getTaskName().setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                tasks.get(position).setCompleted(true);
+            }
+            else{
+                holder.getTaskName().setPaintFlags(holder.getTaskName().getPaintFlags() &
+                        (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                tasks.get(position).setCompleted(true);
+            }
+
+        });
     }
 
     @Override
