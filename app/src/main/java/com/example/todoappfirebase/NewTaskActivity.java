@@ -61,7 +61,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
-                Task task = new Task("id",title, description, date, false, userID);
+                Task task = new Task(title+new Date(),title, description, date, false, userID);
                 db.collection("tasks").add(task);
 
                /* tasks.add(task);

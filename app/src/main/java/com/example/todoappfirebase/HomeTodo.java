@@ -69,7 +69,6 @@ public class HomeTodo extends AppCompatActivity {
 
 
     private void getTaskFromFirebase(String userID) {
-        firebaseTasks = new ArrayList<>();
         tasks = new ArrayList<>();
         // get all documents from firebase
         db.collection("tasks").get().addOnCompleteListener(task -> {
@@ -83,7 +82,6 @@ public class HomeTodo extends AppCompatActivity {
                         tasks.add(task1);
                         taskAdapter = new TaskAdapter(tasks);
                         recyclerView.setAdapter(taskAdapter);
-                        firebaseTasks.add(task1);
                     }
                 }
             }
