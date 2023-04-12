@@ -27,7 +27,6 @@ public class SignInActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button createAccountButton;
     private Button forgotPasswordButton;
-
     private Button resetPasswordButton;
 
 
@@ -35,6 +34,7 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        this.setTitle("Log In");
 
         mAuth = FirebaseAuth.getInstance();
 

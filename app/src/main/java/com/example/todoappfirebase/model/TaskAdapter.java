@@ -43,10 +43,17 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         holder.getTaskDate().setText(task.getDueDate().toString());
 
         holder.getRadioButton().setChecked(task.isCompleted());
+
         if (task.isCompleted()) {
             holder.getTaskName().setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.getTaskDescription().setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.getTaskDate().setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         } else {
             holder.getTaskName().setPaintFlags(holder.getTaskName().getPaintFlags() &
+                    (~Paint.STRIKE_THRU_TEXT_FLAG));
+            holder.getTaskDescription().setPaintFlags(holder.getTaskDescription().getPaintFlags() &
+                    (~Paint.STRIKE_THRU_TEXT_FLAG));
+            holder.getTaskDate().setPaintFlags(holder.getTaskDate().getPaintFlags() &
                     (~Paint.STRIKE_THRU_TEXT_FLAG));
         }
 
@@ -54,6 +61,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
             if (holder.getRadioButton().isChecked()) {
                 holder.getTaskName().setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                holder.getTaskDescription().setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                holder.getTaskDate().setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                 tasks.get(position).setIsCompleted(true);
 
                 firebaseDB.collection("tasks").whereEqualTo("id", task.getId()).get().addOnCompleteListener(task1 -> {
@@ -68,6 +77,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
             } else {
                 holder.getTaskName().setPaintFlags(holder.getTaskName().getPaintFlags() &
                         (~Paint.STRIKE_THRU_TEXT_FLAG));
+                holder.getTaskDescription().setPaintFlags(holder.getTaskDescription().getPaintFlags() &
+                        (~Paint.STRIKE_THRU_TEXT_FLAG));
+                holder.getTaskDate().setPaintFlags(holder.getTaskDate().getPaintFlags() &
+                        (~Paint.STRIKE_THRU_TEXT_FLAG));
+
                 tasks.get(position).setIsCompleted(true);
                 firebaseDB.collection("tasks").whereEqualTo("id", task.getId()).get().addOnCompleteListener(task1 -> {
                             if (task1.isSuccessful()) {

@@ -34,6 +34,7 @@ public class NewTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
+        this.setTitle("New Task");
 
 
         titleEditText = findViewById(R.id.new_task_title);

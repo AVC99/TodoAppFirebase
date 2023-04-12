@@ -31,6 +31,8 @@ public class HomeTodo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_todo);
+        this.setTitle("Home");
+
         tasks = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         Bundle extras = getIntent().getExtras();

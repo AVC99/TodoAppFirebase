@@ -25,6 +25,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
+        this.setTitle("Create Account");
+
         mAuth = FirebaseAuth.getInstance();
 
         emailEditText = findViewById(R.id.create_account_email);
